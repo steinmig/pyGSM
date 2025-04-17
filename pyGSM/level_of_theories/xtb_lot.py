@@ -67,7 +67,7 @@ class xTB_lot(Lot):
 
 if __name__ == "__main__":
 
-    geom = manage_xyz.read_xyz('../../data/ethylene.xyz')
+    geom = manage_xyz.read_xyz('../data/ethylene.xyz')
     # geoms=manage_xyz.read_xyzs('../../data/diels_alder.xyz')
     # geom = geoms[0]
     # geom=manage_xyz.read_xyz('xtbopt.xyz')

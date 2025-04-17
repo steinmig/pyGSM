@@ -62,6 +62,13 @@ class Lot(object):
         )
 
         opt.add_option(
+            key='cell',
+            value=None,
+            required=False,
+            doc='cell object to set ase cell'
+        )
+
+        opt.add_option(
             key='states',
             value=[(1, 0)],
             required=False,
@@ -238,6 +245,7 @@ class Lot(object):
             print(' New states ', self.states)
 
         self.geom = self.options['geom']
+        self.cell = self.options['cell']
         if self.geom is not None:
             print(" initializing LOT from geom")
         elif self.options['fnm'] is not None:

@@ -118,7 +118,6 @@ class Options(object):
         Params/Members:
             - options - dict of key -> Option
         """
-
         if options is None:
             self.options = collections.OrderedDict()
         else:
@@ -158,7 +157,6 @@ class Options(object):
               *value* of this object, which should be accessed through the
               __getitem__ method below).
         """
-
         if key not in self.options:
             raise ValueError("Key %s is not in Options" % key)
         return self.options[key]
@@ -174,7 +172,6 @@ class Options(object):
         Returns:
             - value - value of Option (raises RuntimeError if type, value or other validity error).
         """
-
         if key not in self.options:
             raise ValueError("Key %s is not in Options" % key)
         return self.options[key].get_value()
@@ -209,7 +206,6 @@ class Options(object):
         Results:
             - Option values are updated if valid.
         """
-
         for k, v in options.items():
             self[k] = v
         return self

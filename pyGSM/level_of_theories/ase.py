@@ -71,7 +71,9 @@ class ASELoT(Lot):
 
     def run(self, geom, mult, ad_idx, runtype='gradient'):
         # run ASE
-        self.run_ase_atoms(xyz_to_ase(geom), mult, ad_idx, runtype)
+        mol = xyz_to_ase(geom,cell=self.cell)
+        self.run_ase_atoms(mol, mult, ad_idx, runtype)
+
 
     def run_ase_atoms(self, atoms: Atoms, mult, ad_idx, runtype='gradient'):
         # set the calculator
@@ -97,7 +99,7 @@ class ASELoT(Lot):
         self.hasRanForCurrentCoords = True
 
 
-def xyz_to_ase(xyz):
+def xyz_to_ase(xyz,cell=None):
     """
 
     Parameters
@@ -115,7 +117,10 @@ def xyz_to_ase(xyz):
     # compatible with list-of-list as well
     numbers = [atomic_numbers[x[0]] for x in xyz]
     pos = [x[1:4] for x in xyz]
-    return geom_to_ase(numbers, pos)
+    if cell:
+        return geom_to_ase(numbers, pos, cell=cell)
+    else:
+        return geom_to_ase(numbers, pos)
 
 
 def geom_to_ase(numbers, positions, **kwargs):
